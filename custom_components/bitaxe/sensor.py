@@ -121,7 +121,7 @@ class BitAxeSensor(Entity):
             return int(value)
             
         if self.sensor_type in ["stratumUser", "fallbackStratumUser"]:
-            return _format_wallet(value)
+            return self._format_wallet(value)
 
         return value if value is not None else "N/A"
 
