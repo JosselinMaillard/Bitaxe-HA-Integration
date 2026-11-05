@@ -18,6 +18,8 @@ SENSOR_NAME_MAP = {
     "fanspeed": "Fan Speed",
     "fanrpm": "Fan RPM",
     "uptimeSeconds": "Uptime",
+    "stratumUser": "Main pool",
+    "fallbackStratumUser":"Fallback Pool",
 }
 
 async def async_setup_entry(hass, entry, async_add_entities):
@@ -39,6 +41,8 @@ async def async_setup_entry(hass, entry, async_add_entities):
         BitAxeSensor(coordinator, "fanspeed", device_name, entry),
         BitAxeSensor(coordinator, "fanrpm", device_name, entry),
         BitAxeSensor(coordinator, "uptimeSeconds", device_name, entry),
+        BitAxeSensor(coordinator, "stratumUser", device_name, entry),
+        BitAxeSensor(coordinator, "fallbackStratumUser", device_name, entry),
     ]
 
     async_add_entities(sensors, update_before_add=True)
