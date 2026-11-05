@@ -146,7 +146,7 @@ class BitAxeSensor(Entity):
             return "RPM"
         return None
         
-    @property
+    @staticmethod
     def _format_wallet(wallet):
         if wallet is not None:
             temp = wallet.split('.')[0] 
