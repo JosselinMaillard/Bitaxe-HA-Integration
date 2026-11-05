@@ -119,6 +119,9 @@ class BitAxeSensor(Entity):
 
         if self.sensor_type == "hashRate" and value is not None:
             return int(value)
+            
+        if self.sensor_type in ["stratumUser", "fallbackStratumUser"]:
+            return _format_wallet(value)
 
         return value if value is not None else "N/A"
 
@@ -142,6 +145,14 @@ class BitAxeSensor(Entity):
         elif self.sensor_type == "fanrpm":
             return "RPM"
         return None
+        
+    @property
+    def _format_wallet(wallet):
+        if wallet is not None:
+            temp = wallet.split('.')[0] 
+            return temp[0:4]+"..."+temp[-4:]
+        else
+            return None
 
     def _get_icon(self, sensor_type):
         if sensor_type == "bestSessionDiff":
@@ -162,4 +173,6 @@ class BitAxeSensor(Entity):
             return "mdi:thermometer"
         elif sensor_type == "uptimeSeconds":
             return "mdi:clock"
+        elif sensor_type in ["fallbackStratumUser", "stratumUser"]:
+            return "mdi:wallet"
         return "mdi:help-circle"
