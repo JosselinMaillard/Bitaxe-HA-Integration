@@ -151,7 +151,7 @@ class BitAxeSensor(Entity):
         if wallet is not None:
             temp = wallet.split('.')[0] 
             return temp[0:4]+"..."+temp[-4:]
-        else
+        else:
             return None
 
     def _get_icon(self, sensor_type):
